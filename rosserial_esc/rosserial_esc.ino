@@ -43,6 +43,7 @@ void motor_update_cb(const std_msgs::Int16MultiArray& cmd_msg) {
 ros::Subscriber<std_msgs::Int16MultiArray> sub("motor", motor_update_cb);
 
 void setup() {
+  nh.getHardware()->setBaud(115200);
   nh.initNode();
   nh.subscribe(sub);
 
