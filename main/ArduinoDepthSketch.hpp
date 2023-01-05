@@ -23,7 +23,7 @@ namespace ArduinoDepthSensorSketch
     /* Time Constants */
     // Since reading from the sensor takes up to 40ms,
     // make sure this is at least 40.
-    constexpr unsigned long MEASUREMENT_DELAY_MS = 40;
+    constexpr unsigned long MEASUREMENT_DELAY_MS = 50;
     constexpr unsigned long FAILURE_WARNING_MS = 5000;
 
     /* Fluid Density */
@@ -39,7 +39,7 @@ namespace ArduinoDepthSensorSketch
 
     // Depth readings are in meters
     std_msgs::Float32 depth_msg;
-    ros::Publisher pub_depth("/depth/raw_depth", &depth_msg);
+    ros::Publisher pub_depth(DEPTH_TOPIC_NAME, &depth_msg);
 
     void setup()
     {
