@@ -1,4 +1,3 @@
-#pragma once
 /**
  * Arduino sketch to read from a BlueRobotics Bar30 Depth Sensor
  * and publish depth readings to ROS.
@@ -9,6 +8,7 @@
  * - Ivan Wei (ivanw8288@gmail.com)
  * - Ayan Chowdhury (ayanc@umich.edu)
  **/
+#pragma once
 
 #include <MS5837.h>
 #include <ros.h>

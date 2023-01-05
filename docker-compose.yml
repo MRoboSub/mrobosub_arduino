@@ -1,7 +1,7 @@
 version: "3.9"
 services:
     arduino_main:
-        build: 
+        build:
             context: .
             dockerfile: Dockerfile
         ports:
@@ -16,6 +16,6 @@ services:
             - QT_X11_NO_MITSHM=1
         tty: true
         stdin_open: true
-  
+
 # Push with:
 # docker buildx build --push --platform linux/arm/v7,linux/arm64/v8,linux/amd64 --tag mrobosub/mrobosub .
