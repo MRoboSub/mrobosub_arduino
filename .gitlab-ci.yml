@@ -1,9 +1,0 @@
-stages:
-  - build
-
-build-job:
-  stage: build
-  script:
-    - echo "Compiling with arduino-cli..."
-    - docker-compose exec arduino_main arduino-cli compile --fqbn arduino:avr:mega 
-    - echo "Compile complete."
