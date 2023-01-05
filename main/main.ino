@@ -1,7 +1,6 @@
 #include "GlobalNodeHandle.hpp"
 #include "TestSketches.hpp"
 #include "ArduinoDepthSketch.hpp"
-#include "RosserialEscSketch.hpp"
 
 #include <Scheduler.h>
 #include <ros.h>
@@ -14,8 +13,7 @@ void setup() {
     }
     Global::nh.loginfo("Connected NodeHandle, starting tasks.");
     
-    Scheduler.start(ArduinoDepthSensorSketch::setup, ArduinoDepthSensorSketch::loop);
-    Scheduler.start(RosSerialEscSketch::setup, RosSerialEscSketch::loop);    
+    Scheduler.start(ArduinoDepthSensorSketch::setup, ArduinoDepthSensorSketch::loop); 
 }
 
 void loop() {
