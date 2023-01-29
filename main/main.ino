@@ -8,6 +8,7 @@
 #include "GlobalNodeHandle.hpp"
 #include "TestSketches.hpp"
 #include "ArduinoDepthSketch.hpp"
+#include "ESCMotorSketch.hpp"
 #include "ServoSketch.hpp"
 
 #include <Scheduler.h>
@@ -27,6 +28,7 @@ void setup()
     // Add module callbacks below
     Scheduler.start(ArduinoDepthSensorSketch::setup, ArduinoDepthSensorSketch::loop);
     Scheduler.start(ServoSketch::setup, ServoSketch::loop);
+    Scheduler.start(ESCMotorSketch::setup, ESCMotorSketch::loop);
 }
 
 void loop()
