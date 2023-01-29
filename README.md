@@ -2,7 +2,21 @@
 An Arduino sketch project for Michigan Robotic Submarine. A fairly modular system of running multiple setup-loop tasks in parallel on an Arduino Mega.
 
 ## Current Modules
-- [ArduinoDepthSketch.hpp](main/ArduinoDepthSketch.hpp) - For getting readings from a Bar30 Depth/Pressure Sensor - namespace `ArduinoDepthSensorSketch`
+- [DepthSensorSketch.hpp](main/DepthSensorSketch.hpp) - For getting readings from a Bar30 Depth/Pressure Sensor - namespace `DepthSensorSketch`
+- [ServoSketch.hpp](main/ServoSketch.hpp) - For controlling a DSSERVO 35kg servo - namespace `ServoSketch`
+- [ESCMotorSketch.hpp](main/ESCMotorSketch.hpp) - For controlling eight BlueRobotics ESC motors - namespace `ESCMotorSketch`
+
+## Pins Used
+- Depth Sensor - [DepthSensorSketch.hpp](main/DepthSensorSketch.hpp) - SDA, SCL
+- Servo - [ServoSketch.hpp](main/ServoSketch.hpp) - Digital 12
+- ESC Motors - [ESCMotorSketch.hpp](main/ESCMotorSketch.hpp) - Digital 4-11
+
+## Publishers
+- `/depth/raw_depth` - type `std_msgs::Float32` - the depth sensor reading, in meters - [DepthSensorSketch.hpp](main/DepthSensorSketch.hpp)
+
+## Subscribers
+- `/servo/angle` - type `std_msgs::Int32` - the angle to set the servo to - [ServoSketch.hpp](main/ServoSketch.hpp)
+- `/motors/pwm` - type `std_msgs::Int16MultiArray` - an array of pwms to set the eight motors to - [ESCMotorSketch.hpp](main/ESCMotorSketch.hpp)
 
 ## Testing
 [Docker](https://www.docker.com/) is a prerequisite.

@@ -23,24 +23,25 @@ namespace ESCMotorSketch
     constexpr int MAX_FWD_WIDTH = 1900;
     constexpr int MAX_BCK_WIDTH = 1100;
     constexpr unsigned long SETUP_WAIT = 1000;
+    constexpr char *PWM_TOPIC_NAME = "/motors/pwm";
 
     byte pins[NUM_MOTORS] = {4, 5, 6, 7, 8, 9, 10, 11};
     Servo motors[NUM_MOTORS];
 
-    void motor_update_cb(const std_msgs::Int16MultiArray &cmd_msg)
+    void motor_update_cb(const std_msgs::Int16MultiArray &pwm_msg)
     {
         for (size_t i = 0; i < NUM_MOTORS; ++i)
         {
-            int width = constrain(cmd_msg.data[i], MAX_BCK_WIDTH, MAX_FWD_WIDTH);
+            int width = constrain(pwm_msg.data[i], MAX_BCK_WIDTH, MAX_FWD_WIDTH);
             motors[i].writeMicroseconds(width);
         }
     }
 
-    ros::Subscriber<std_msgs::Int16MultiArray> sub("motor", motor_update_cb);
+    ros::Subscriber<std_msgs::Int16MultiArray> pwm_sub(PWM_TOPIC_NAME, motor_update_cb);
 
     void setup()
     {
-        Global::nh.subscribe(sub);
+        Global::nh.subscribe(pwm_sub);
 
         for (int i = 0; i < NUM_MOTORS; i++)
         {
