@@ -8,6 +8,7 @@ RUN curl -fsSL https://raw.githubusercontent.com/arduino/arduino-cli/master/inst
     arduino-cli config init &&\
     arduino-cli core update-index &&\
     arduino-cli core install arduino:avr &&\
+    arduino-cli lib install "Servo" &&\
     arduino-cli lib install "BlueRobotics MS5837 Library" &&\
     arduino-cli config set library.enable_unsafe_install true &&\
     arduino-cli lib install --git-url https://github.com/mikaelpatel/Arduino-Scheduler

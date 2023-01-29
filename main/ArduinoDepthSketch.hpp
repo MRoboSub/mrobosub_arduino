@@ -39,13 +39,14 @@ namespace ArduinoDepthSensorSketch
 
     // Depth readings are in meters
     std_msgs::Float32 depth_msg;
-    ros::Publisher pub_depth(DEPTH_TOPIC_NAME, &depth_msg);
+    ros::Publisher depth_pub(DEPTH_TOPIC_NAME, &depth_msg);
 
     void setup()
     {
         // Register publisher
-        Global::nh.advertise(pub_depth);
-
+        Global::nh.advertise(depth_pub);
+        Global::nh.negotiateTopics();
+        
         // For I2C communication with sensor
         Wire.begin();
 
@@ -73,7 +74,7 @@ namespace ArduinoDepthSensorSketch
 
         // Publish depth readings in meters
         depth_msg.data = sensor.depth();
-        pub_depth.publish(&depth_msg);
+        depth_pub.publish(&depth_msg);
 
         Global::nh.spinOnce();
 
