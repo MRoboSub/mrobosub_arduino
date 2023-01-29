@@ -16,7 +16,7 @@
 #include <Wire.h>
 #include "GlobalNodeHandle.hpp"
 
-namespace ArduinoDepthSensorSketch
+namespace DepthSensorSketch
 {
     /** CONSTANTS **/
 
@@ -46,7 +46,7 @@ namespace ArduinoDepthSensorSketch
         // Register publisher
         Global::nh.advertise(depth_pub);
         Global::nh.negotiateTopics();
-        
+
         // For I2C communication with sensor
         Wire.begin();
 

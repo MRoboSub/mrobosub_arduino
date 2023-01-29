@@ -6,8 +6,7 @@
  * - Ayan Chowdhury (ayanc@umich.edu)
  **/
 #include "GlobalNodeHandle.hpp"
-#include "TestSketches.hpp"
-#include "ArduinoDepthSketch.hpp"
+#include "DepthSensorSketch.hpp"
 #include "ESCMotorSketch.hpp"
 #include "ServoSketch.hpp"
 
@@ -26,7 +25,7 @@ void setup()
     Global::nh.loginfo("Connected NodeHandle, starting tasks.");
 
     // Add module callbacks below
-    Scheduler.start(ArduinoDepthSensorSketch::setup, ArduinoDepthSensorSketch::loop);
+    Scheduler.start(DepthSensorSketch::setup, DepthSensorSketch::loop);
     Scheduler.start(ServoSketch::setup, ServoSketch::loop);
     Scheduler.start(ESCMotorSketch::setup, ESCMotorSketch::loop);
 }

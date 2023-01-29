@@ -16,13 +16,13 @@ namespace ServoSketch
 {
     // Servo Values
     Servo servo;
-    constexpr int PORT = 9;
+    constexpr int PIN = 12;
 
     /* ROSTopic Name */
     constexpr char *ANGLE_TOPIC_NAME = "/servo/angle";
 
     /* Angle Subscriber */
-    void set_angle(const std_msgs::Int32& angle_msg)
+    void set_angle(const std_msgs::Int32 &angle_msg)
     {
         servo.write(angle_msg.data);
     }
@@ -30,7 +30,7 @@ namespace ServoSketch
 
     void setup()
     {
-        servo.attach(PORT);
+        servo.attach(PIN);
         Global::nh.loginfo("Servo attached");
         Global::nh.subscribe(angle_sub);
         Global::nh.negotiateTopics();
