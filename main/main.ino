@@ -25,9 +25,9 @@ void setup()
     Global::nh.loginfo("Connected NodeHandle, starting tasks.");
 
     // Add module callbacks below
-    Scheduler.start(DepthSensorSketch::setup, DepthSensorSketch::loop);
+    // Scheduler.start(DepthSensorSketch::setup, DepthSensorSketch::loop);
     Scheduler.start(ServoSketch::setup, ServoSketch::loop);
-    Scheduler.start(ESCMotorSketch::setup, ESCMotorSketch::loop);
+    // Scheduler.start(ESCMotorSketch::setup, ESCMotorSketch::loop);
 }
 
 void loop()
