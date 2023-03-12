@@ -15,7 +15,7 @@ An Arduino sketch project for Michigan Robotic Submarine. A fairly modular syste
 - `/depth/raw_depth` - type `std_msgs::Float32` - the depth sensor reading, in meters - [DepthSensorSketch.hpp](main/DepthSensorSketch.hpp)
 
 ## Subscribers
-- `/servo/angle` - type `std_msgs::Int32` - the angle to set the servo to - [ServoSketch.hpp](main/ServoSketch.hpp)
+- `/servo/angle` - type `std_msgs::Int32` - the angle to set the servo to, between 25 and 155 degrees - [ServoSketch.hpp](main/ServoSketch.hpp)
 - `/motors/pwm` - type `std_msgs::Int16MultiArray` - an array of pwms to set the eight motors to - [ESCMotorSketch.hpp](main/ESCMotorSketch.hpp)
 
 ## Testing

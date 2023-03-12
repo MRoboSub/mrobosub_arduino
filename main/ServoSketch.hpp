@@ -26,6 +26,8 @@ namespace ServoSketch
     {
         servo.write(angle_msg.data);
     }
+
+    // NOTE: Angle on servo is restricted between 25 degrees and 155 degrees.
     ros::Subscriber<std_msgs::Int32> angle_sub(ANGLE_TOPIC_NAME, &set_angle);
 
     void setup()
