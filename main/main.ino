@@ -24,15 +24,14 @@ void setup()
     }
     Global::nh.loginfo("Connected NodeHandle, starting tasks.");
 
-    // Add module callbacks below
-    // Scheduler.start(DepthSensorSketch::setup, DepthSensorSketch::loop);
-    Scheduler.start(ServoSketch::setup, ServoSketch::loop);
-    // Scheduler.start(ESCMotorSketch::setup, ESCMotorSketch::loop);
+    DepthSensorSketch::setup();
+    ServoSketch::setup();
 }
 
 void loop()
 {
     // Do nothing and yield for the other scheduled tasks
-    Global::nh.spinOnce();
-    delay(100);
+    // Global::nh.spinOnce();
+    
+    DepthSensorSketch::loop();
 }
