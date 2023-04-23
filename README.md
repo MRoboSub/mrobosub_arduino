@@ -1,21 +1,22 @@
 # mrobosub_arduino
-An Arduino sketch project for Michigan Robotic Submarine. A fairly modular system of running multiple setup-loop tasks in parallel on an Arduino Mega.
+An Arduino sketch project for Michigan Robotic Submarine. 
 
 ## Current Modules
 - [DepthSensorSketch.hpp](main/DepthSensorSketch.hpp) - For getting readings from a Bar30 Depth/Pressure Sensor - namespace `DepthSensorSketch`
-- [ServoSketch.hpp](main/ServoSketch.hpp) - For controlling a DSSERVO 35kg servo - namespace `ServoSketch`
+- [ServoSketch.hpp](main/ServoSketch.hpp) - For controlling two DSSERVO 35kg servo - namespace `ServoSketch`
 - [ESCMotorSketch.hpp](main/ESCMotorSketch.hpp) - For controlling eight BlueRobotics ESC motors - namespace `ESCMotorSketch`
 
 ## Pins Used
 - Depth Sensor - [DepthSensorSketch.hpp](main/DepthSensorSketch.hpp) - SDA, SCL
-- Servo - [ServoSketch.hpp](main/ServoSketch.hpp) - Digital 12
+- Left Servo, Right Servo - [ServoSketch.hpp](main/ServoSketch.hpp) - Digital 11 (Right Servo), Digital 12 (Left Servo)
 - ESC Motors - [ESCMotorSketch.hpp](main/ESCMotorSketch.hpp) - Digital 4-11
 
 ## Publishers
 - `/depth/raw_depth` - type `std_msgs::Float32` - the depth sensor reading, in meters - [DepthSensorSketch.hpp](main/DepthSensorSketch.hpp)
 
 ## Subscribers
-- `/servo/angle` - type `std_msgs::Int32` - the angle to set the servo to, between 25 and 155 degrees - [ServoSketch.hpp](main/ServoSketch.hpp)
+- `/left_servo/angle` - type `std_msgs::Int32` - the angle to set the left servo to, between 25 and 155 degrees - [ServoSketch.hpp](main/ServoSketch.hpp)
+- `/right_servo/angle` - type `std_msgs::Int32` - the angle to set the right servo to, between 25 and 155 degrees - [ServoSketch.hpp](main/ServoSketch.hpp)
 - `/motors/pwm` - type `std_msgs::Int16MultiArray` - an array of pwms to set the eight motors to - [ESCMotorSketch.hpp](main/ESCMotorSketch.hpp)
 
 ## Testing
@@ -67,22 +68,6 @@ $ docker-compose up -d
 ```
 
 Attach to the Docker container. The source is in `main`.
-
-## Development Guidelines
-ArduinoScheduler technically allows for any callbacks, but to be organized:
-
-To add a new module, add a new namespace - preferably in a separate header file - and implement `setup` and `loop` in that namespace. 
-
-WARNING: Only one ROS `NodeHandle` can exist, so include `GlobalNodeHandle.hpp` and use `Global::nh` when interacting with a `NodeHandle`. The node is also initialized at the start of `main.ino`'s setup, so you don't need to do that yourself.
-
-Otherwise, porting from a separate sketch should not require many changes.
-
-After you finish implementing, in `main.ino`, at the bottom of `setup`, add 
-```cpp
-Scheduler.start(Namespace::setup, Namespace::loop);
-```
-
-An example can be seen in [ArduinoDepthSketch.hpp](main/ArduinoDepthSketch.hpp)
 
 ## Tools Used
 - arduino-cli, a CLI tool to allow development outside of Arduino IDE - https://github.com/arduino/arduino-cli
