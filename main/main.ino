@@ -6,6 +6,8 @@
  * - Ayan Chowdhury (ayanc@umich.edu)
  **/
 #include "GlobalNodeHandle.hpp"
+
+#include "ButtonPollingSketch.hpp"
 #include "DepthSensorSketch.hpp"
 #include "ESCMotorSketch.hpp"
 #include "ServoSketch.hpp"
@@ -24,8 +26,9 @@ void setup()
     }
     Global::nh.loginfo("Connected NodeHandle, starting tasks.");
 
+    ButtonPollingSketch::setup();
     DepthSensorSketch::setup();
-    ServoSketch::setup();
+    // ServoSketch::setup();
 }
 
 void loop()
@@ -33,5 +36,6 @@ void loop()
     // Do nothing and yield for the other scheduled tasks
     // Global::nh.spinOnce();
     
+    ButtonPollingSketch::loop();
     DepthSensorSketch::loop();
 }
