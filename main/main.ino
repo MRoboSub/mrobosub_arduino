@@ -10,6 +10,7 @@
 #include "ButtonPollingSketch.hpp"
 #include "DepthSensorSketch.hpp"
 #include "ESCMotorSketch.hpp"
+#include "LEDSketch.hpp"
 #include "ServoSketch.hpp"
 
 #include <Scheduler.h>
@@ -26,6 +27,7 @@ void setup()
     }
     Global::nh.loginfo("Connected NodeHandle, starting tasks.");
 
+    LEDSketch::setup();
     ButtonPollingSketch::setup();
     DepthSensorSketch::setup();
     // ServoSketch::setup();
