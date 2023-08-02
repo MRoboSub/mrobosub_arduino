@@ -3,6 +3,8 @@
 #include <ros.h>
 #include <std_msgs/Bool.h>
 
+#include "GlobalNodeHandle.hpp"
+
 namespace ButtonPollingSketch
 {
     const unsigned long PIN_STRANGE = 12;
@@ -21,6 +23,8 @@ namespace ButtonPollingSketch
         Global::nh.advertise(strange_pub);
         Global::nh.advertise(charm_pub);
         
+        Global::nh.loginfo("Button publishers setup");
+
         pinMode(PIN_STRANGE, INPUT_PULLUP);
         pinMode(PIN_CHARM, INPUT_PULLUP);
     }
