@@ -23,6 +23,7 @@ namespace ButtonPollingSketch
         Global::nh.advertise(strange_pub);
         Global::nh.advertise(charm_pub);
         
+        Global::nh.negotiateTopics();
         Global::nh.loginfo("Button publishers setup");
 
         pinMode(PIN_STRANGE, INPUT_PULLUP);
