@@ -16,8 +16,8 @@ namespace LEDSketch
     constexpr char *ON_LED_TOPIC = "/led/on";
 
     void strangeCallback(const std_msgs::Bool& msg) {digitalWrite(PIN_STRANGE_LED, msg.data);}
-    void charmCallback(const std_msgs::Bool& msg) {digitalWrite(PIN_STRANGE_LED, msg.data);}
-    void onCallback(const std_msgs::Bool& msg) {digitalWrite(PIN_STRANGE_LED, msg.data);}
+    void charmCallback(const std_msgs::Bool& msg) {digitalWrite(PIN_CHARM_LED, msg.data);}
+    void onCallback(const std_msgs::Bool& msg) {digitalWrite(PIN_ON_LED, msg.data);}
 
     ros::Subscriber<std_msgs::Bool> strange_led_subscriber(STRANGE_LED_TOPIC, &strangeCallback);
     ros::Subscriber<std_msgs::Bool> charm_led_subscriber(CHARM_LED_TOPIC, &charmCallback);
