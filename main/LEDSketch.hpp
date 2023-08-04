@@ -7,9 +7,9 @@
 
 namespace LEDSketch
 {
-    constexpr unsigned long PIN_STRANGE_LED = 2;
-    constexpr unsigned long PIN_CHARM_LED = 3;
-    constexpr unsigned long PIN_ON_LED = 4;
+    constexpr unsigned long PIN_STRANGE_LED = 52;
+    constexpr unsigned long PIN_CHARM_LED = 53;
+    constexpr unsigned long PIN_ON_LED = 50;
 
     constexpr char *STRANGE_LED_TOPIC = "/led/strange";
     constexpr char *CHARM_LED_TOPIC = "/led/charm";
