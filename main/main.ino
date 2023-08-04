@@ -12,6 +12,7 @@
 #include "ESCMotorSketch.hpp"
 #include "LEDSketch.hpp"
 #include "ServoSketch.hpp"
+#include "PowerSketch.hpp"
 
 #include <Scheduler.h>
 #include <ros.h>
@@ -29,6 +30,7 @@ void setup()
 
     LEDSketch::setup();
     ButtonPollingSketch::setup();
+    PowerSketch::setup();
     DepthSensorSketch::setup();
     // ServoSketch::setup();
 }
