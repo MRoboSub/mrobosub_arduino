@@ -25,6 +25,10 @@ namespace LEDSketch
 
     void setup()
     {
+        pinMode(PIN_STRANGE_LED, OUTPUT);
+        pinMode(PIN_CHARM_LED, OUTPUT);
+        pinMode(PIN_ON_LED, OUTPUT);
+
         Global::nh.subscribe(strange_led_subscriber);
         Global::nh.subscribe(charm_led_subscriber);
         Global::nh.subscribe(on_led_subscriber);
