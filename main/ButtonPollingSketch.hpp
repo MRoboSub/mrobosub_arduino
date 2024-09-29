@@ -7,34 +7,34 @@
 
 namespace ButtonPollingSketch
 {
-    const unsigned long PIN_STRANGE = 12;
-    const unsigned long PIN_CHARM = 13;
+    const unsigned long PIN_HALL_EFFECT_1 = 12;
+    const unsigned long PIN_HALL_EFFECT_2 = 13;
 
-    constexpr char* STRANGE_TOPIC_NAME = "/buttons/strange";
-    constexpr char* CHARM_TOPIC_NAME = "/buttons/charm";
+    constexpr char* HALL_EFFECT_1_NAME = "/buttons/hall_effect_1";
+    constexpr char* HALL_EFFECT_2_NAME = "/buttons/hall_effect_2";
 
-    std_msgs::Bool strange_msg;
-    std_msgs::Bool charm_msg;
+    std_msgs::Bool hall_effect_1_msg;
+    std_msgs::Bool hall_effect_2_msg;
 
-    ros::Publisher strange_pub(STRANGE_TOPIC_NAME, &strange_msg);
-    ros::Publisher charm_pub(CHARM_TOPIC_NAME, &charm_msg);
+    ros::Publisher hall_effect_1_pub(HALL_EFFECT_1_NAME, &hall_effect_1_msg);
+    ros::Publisher hall_effect_2_pub(HALL_EFFECT_2_NAME, &hall_effect_2_msg);
 
     void setup() {
-        Global::nh.advertise(strange_pub);
-        Global::nh.advertise(charm_pub);
+        Global::nh.advertise(hall_effect_1_pub);
+        Global::nh.advertise(hall_effect_2_pub);
         
         Global::nh.negotiateTopics();
         Global::nh.loginfo("Button publishers setup");
 
-        pinMode(PIN_STRANGE, INPUT_PULLUP);
-        pinMode(PIN_CHARM, INPUT_PULLUP);
+        pinMode(PIN_HALL_EFFECT_1, INPUT_PULLUP);
+        pinMode(PIN_HALL_EFFECT_2, INPUT_PULLUP);
     }
 
     void loop() {
-        strange_msg.data = digitalRead(PIN_STRANGE);
-        charm_msg.data = digitalRead(PIN_CHARM);
+        hall_effect_1_msg.data = digitalRead(PIN_HALL_EFFECT_1);
+        hall_effect_2_msg.data = digitalRead(PIN_HALL_EFFECT_2);
 
-        strange_pub.publish(&strange_msg);
-        charm_pub.publish(&charm_msg);
+        hall_effect_1_pub.publish(&hall_effect_1_msg);
+        hall_effect_2_pub.publish(&hall_effect_2_msg);
     }
 }
